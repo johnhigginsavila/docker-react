@@ -1,0 +1,15 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
+
+# docker build -f Dockerfile.dev .
+# docker run -p 3000:3000 -v $(pwd):/app <image id>
+# -v file will not overwrite
+# -v dir:/dir will connect local dir to container dir
